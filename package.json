@@ -1,8 +1,8 @@
 {
   "name": "element-ui-expansions",
-  "version": "0.0.4-bate",
+  "version": "0.0.6-bate",
   "private": false,
-  "main": "lib/element-ui-expansions.common.js ",
+  "main": "lib/element-ui-expansions.common.js",
   "files": [
     "lib",
     "src",
