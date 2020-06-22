@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-17 23:17:52
  * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-18 02:58:03
+ * @LastEditTime: 2020-06-22 17:28:08
  * @FilePath: \element-ui-expansions\packages\dynamic-form-item\src\index.vue
 --> 
 
@@ -38,16 +38,43 @@
       </el-upload>
       <p class="file-name">{{getFileName}}</p>
     </div>
+    <el-select
+      class="option"
+      @input="input"
+      :value="value"
+      v-else-if="type === 'option'"
+      size="small"
+    >
+      <slot name="option-list">
+        <el-option
+          v-for="(option,index) in options"
+          :key="index"
+          :label="option[optionProp.value]||option.label"
+          :value="option[optionProp.value]||option.value"
+          :disabled="optionProp.disabled||false"
+        />
+      </slot>
+    </el-select>
   </el-form-item>
 </template>
 <script>
-import { Button, Input, Upload, FormItem, DatePicker } from "element-ui";
+import {
+  Button,
+  Input,
+  Upload,
+  FormItem,
+  DatePicker,
+  Select,
+  Option
+} from "element-ui";
 import Vue from "vue";
 Vue.use(Button);
 Vue.use(Input);
 Vue.use(Upload);
 Vue.use(FormItem);
 Vue.use(DatePicker);
+Vue.use(Select);
+Vue.use(Option);
 export default {
   name: "ElDynamicFormItem",
   props: {
@@ -74,6 +101,21 @@ export default {
       type: Number,
       default: 6,
       required: false
+    },
+    options: {
+      type: Array,
+      required: false
+    },
+    optionProp: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          value: "value",
+          label: "label",
+          disabled: false
+        };
+      }
     }
   },
   model: {
@@ -117,6 +159,9 @@ export default {
     }
   }
   .date-picker {
+    width: 100% !important;
+  }
+  .option {
     width: 100% !important;
   }
 }

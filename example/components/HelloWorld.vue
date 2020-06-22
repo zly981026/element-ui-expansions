@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-17 22:02:38
  * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-18 02:39:56
+ * @LastEditTime: 2020-06-22 17:28:54
  * @FilePath: \element-ui-expansions\example\components\HelloWorld.vue
 --> 
 
@@ -12,6 +12,17 @@
       <el-dynamic-form-item label="date" type="date" v-model="form.date" />
       <el-dynamic-form-item label="age" type="int" v-model="form.age" />
       <el-dynamic-form-item label="photo" type="file" />
+      <el-dynamic-form-item
+        label="option"
+        type="option"
+        :options="options"
+        :option-prop="optionProp"
+        v-model="form.optionValue"
+      >
+        <template v-slot:option-list>
+          <el-option v-for="(option,index) in options" :key="index" :value="option.id" :label="option.name">option {{option.id}}</el-option>
+        </template>
+      </el-dynamic-form-item>
       <el-dynamic-form-item label="postscript" type="textarea" v-model="form.postscript" />
     </el-form>
   </div>
@@ -36,8 +47,23 @@ export default {
         date: new Date(),
         age: 10,
         postscript: ""
+      },
+      options: [
+        {
+          id: "01",
+          name: "first",
+          isActive: true
+        }
+      ],
+      optionProp: {
+        value: "id",
+        label: "name"
       }
     };
+  },methods:{
+    getOptions:function(options){
+      console.log(options);
+    }
   }
 };
 </script>
