@@ -1,3 +1,9 @@
+<!--
+ * @Date: 2020-06-17 22:02:56
+ * @LastEditors: 曾令宇
+ * @LastEditTime: 2020-06-24 15:33:44
+ * @FilePath: \element-ui-expansions\README.md
+--> 
 # element-ui-expansions
 ## 基于Element UI拓展组件库
 
@@ -9,7 +15,7 @@
    <el-dynamic-form-item label="name" type="string" v-model="form.name" />
    ```
 
-   ![image-20200624140627272](.\doc_img\image-20200624140627272.png)
+   ![image-20200624140627272](doc_img/image-20200624140627272.png)
 
    #### 属性：
 
