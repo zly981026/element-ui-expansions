@@ -9,7 +9,7 @@
    <el-dynamic-form-item label="name" type="string" v-model="form.name" />
    ```
 
-   ![image-20200624140627272](E:\vscode_workspace_2\element-ui-expansions\doc_img\image-20200624140627272.png)
+   ![image-20200624140627272](.\doc_img\image-20200624140627272.png)
 
    #### 属性：
 
