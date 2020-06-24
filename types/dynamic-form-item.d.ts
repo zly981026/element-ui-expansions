@@ -1,12 +1,12 @@
 /*
  * @Date: 2020-06-17 23:43:20
  * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-23 15:06:54
+ * @LastEditTime: 2020-06-24 14:35:51
  * @FilePath: \element-ui-expansions\types\dynamic-form-item.d.ts
  */
 import { ElementUIComponent } from 'element-ui/types/component';
 
-export type FormItemType = "number" | "string" | "textarea" | "date" | "boolean";
+export type FormItemType = "number" | "string" | "textarea" | "date" | "boolean" | "select";
 
 export interface OptionProp {
     value: string;
@@ -14,15 +14,16 @@ export interface OptionProp {
     disabled: string;
 }
 export declare class ElDynamicFormItem extends ElementUIComponent {
-    name: string;
+    value: number | string | Date | boolean;
+    size: string;
     label: string;
     labelWidth: string;
-    value: FormItemType;
-    type: string;
+    type: FormItemType;
     rows: number;
     readonly: boolean;
     options: object[];
     optionProp: OptionProp;
+    clearable: boolean;
     onFileChange: (file: File, fileList: FileList) => void;
     input: (value: number | string | Date | boolean) => void;
 }

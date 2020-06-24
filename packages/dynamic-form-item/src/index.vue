@@ -1,7 +1,7 @@
 <!--
  * @Date: 2020-06-17 23:17:52
  * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-23 15:06:32
+ * @LastEditTime: 2020-06-24 14:22:11
  * @FilePath: \element-ui-expansions\packages\dynamic-form-item\src\index.vue
 --> 
 
@@ -10,36 +10,40 @@
     <el-input
       v-if="type === 'int'"
       type="number"
-      size="small"
+      :size="size"
       :value="value"
       @input="input"
       :readonly="readonly"
+      :clearable="clearable"
     />
     <el-input
       v-else-if="type === 'string'"
       type="text"
-      size="small"
+      :size="size"
       :value="value"
       @input="input"
       :readonly="readonly"
+      :clearable="clearable"
     />
     <el-input
       v-else-if="type === 'textarea'"
       type="textarea"
       :rows="rows"
-      size="small"
+      :size="size"
       :value="value"
       @input="input"
       :readonly="readonly"
+      :clearable="clearable"
     />
     <el-date-picker
       class="date-picker"
       v-else-if="type === 'date'"
-      size="small"
+      :size="size"
       type="date"
       :value="value"
       @input="input"
       :readonly="readonly"
+      :clearable="clearable"
     />
     <div v-else-if="type === 'file'" class="file-upload">
       <el-upload
@@ -50,7 +54,7 @@
         action
         :multiple="false"
       >
-        <el-button slot="trigger" size="small" type="primary" :disabled="readonly">upload</el-button>
+        <el-button slot="trigger" :size="size" type="primary" :disabled="readonly">upload</el-button>
       </el-upload>
       <p class="file-name">{{getFileName}}</p>
     </div>
@@ -59,8 +63,9 @@
       @input="input"
       :value="value"
       v-else-if="type === 'option'"
-      size="small"
+      :size="size"
       :disabled="readonly"
+      :clearable="clearable"
     >
       <slot name="option-list">
         <el-option
@@ -95,9 +100,10 @@ Vue.use(Option);
 export default {
   name: "ElDynamicFormItem",
   props: {
-    name: {
+    size: {
       type: String,
-      required: false
+      required: false,
+      default: "small"
     },
     label: {
       type: String,
@@ -123,7 +129,10 @@ export default {
       type: Array,
       required: false
     },
-
+    clearable: {
+      type: Boolean,
+      default: false
+    },
     readonly: {
       type: Boolean,
       required: false,
