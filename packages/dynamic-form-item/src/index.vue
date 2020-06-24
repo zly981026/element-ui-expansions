@@ -1,14 +1,28 @@
 <!--
  * @Date: 2020-06-17 23:17:52
  * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-22 17:28:08
+ * @LastEditTime: 2020-06-23 15:06:32
  * @FilePath: \element-ui-expansions\packages\dynamic-form-item\src\index.vue
 --> 
 
 <template>
   <el-form-item :label="label" :label-width="labelWidth" class="el-dynamic-form-item">
-    <el-input v-if="type === 'int'" type="number" size="small" :value="value" @input="input" />
-    <el-input v-else-if="type === 'string'" type="text" size="small" :value="value" @input="input" />
+    <el-input
+      v-if="type === 'int'"
+      type="number"
+      size="small"
+      :value="value"
+      @input="input"
+      :readonly="readonly"
+    />
+    <el-input
+      v-else-if="type === 'string'"
+      type="text"
+      size="small"
+      :value="value"
+      @input="input"
+      :readonly="readonly"
+    />
     <el-input
       v-else-if="type === 'textarea'"
       type="textarea"
@@ -16,6 +30,7 @@
       size="small"
       :value="value"
       @input="input"
+      :readonly="readonly"
     />
     <el-date-picker
       class="date-picker"
@@ -24,6 +39,7 @@
       type="date"
       :value="value"
       @input="input"
+      :readonly="readonly"
     />
     <div v-else-if="type === 'file'" class="file-upload">
       <el-upload
@@ -34,7 +50,7 @@
         action
         :multiple="false"
       >
-        <el-button slot="trigger" size="small" type="primary">upload</el-button>
+        <el-button slot="trigger" size="small" type="primary" :disabled="readonly">upload</el-button>
       </el-upload>
       <p class="file-name">{{getFileName}}</p>
     </div>
@@ -44,6 +60,7 @@
       :value="value"
       v-else-if="type === 'option'"
       size="small"
+      :disabled="readonly"
     >
       <slot name="option-list">
         <el-option
@@ -105,6 +122,12 @@ export default {
     options: {
       type: Array,
       required: false
+    },
+
+    readonly: {
+      type: Boolean,
+      required: false,
+      default: false
     },
     optionProp: {
       type: Object,
