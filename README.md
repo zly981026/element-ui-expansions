@@ -1,9 +1,3 @@
-<!--
- * @Date: 2020-06-17 22:02:56
- * @LastEditors: 曾令宇
- * @LastEditTime: 2020-06-24 15:33:44
- * @FilePath: \element-ui-expansions\README.md
---> 
 # element-ui-expansions
 ## 基于Element UI拓展组件库
 
@@ -47,4 +41,10 @@
    | input          | 在 Input 值改变时触发，对 `type="file"` 无效 | (value: number &#124; string &#124; Date &#124; boolean) |
    | on-file-change | 在文件变更时触发，只对 `type="file"` 有效    | (file: File ,  fileList: FileList)                       |
 
+   #### Slot
+   
+   | Name        | 说明                                      |
+   | ----------- | ----------------------------------------- |
+   | option-list | option列表内容，只对 `type="select"` 有效 |
+   
    
